@@ -2,13 +2,13 @@ import PySimpleGUI as sg
 import uuid
 import pyperclip
 
-uuidString = str(uuid.uuid4())
+uuidString = ''
 
 sg.theme('DarkAmber')
 
 layout = [
-    [sg.InputText({uuidString})],
-    [sg.Button("Sair"), sg.Button("Gerar"), sg.Button("Copiar")]
+    [sg.InputText(f'{uuidString}')],
+    [sg.Button("Gerar"), sg.Button("Copiar"), sg.Button("Sair")]
 ]
 
 window = sg.Window("GUID Generate by R", layout, margins=(270, 170))
@@ -16,14 +16,15 @@ window = sg.Window("GUID Generate by R", layout, margins=(270, 170))
 while True:
     event, values = window.read()
 
-    if event == "Sair":
+    if event == "Sair" or event == sg.WINDOW_CLOSED:
         break
 
     elif event == "Gerar":
-        uuidString
+        uuidString = str(uuid.uuid4())
+        print(uuidString)
 
     elif event == "Copiar":
         pyperclip.copy(f'{str(uuidString)}')
 
-
+window.close()
 
