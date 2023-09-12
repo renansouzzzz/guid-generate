@@ -7,7 +7,7 @@ uuidString = ''
 sg.theme('DarkAmber')
 
 layout = [
-    [sg.InputText(f'{uuidString}')],
+    [sg.InputText(f'{uuidString}', key='textInput')],
     [sg.Button("Gerar"), sg.Button("Copiar"), sg.Button("Sair")]
 ]
 
@@ -21,7 +21,7 @@ while True:
 
     elif event == "Gerar":
         uuidString = str(uuid.uuid4())
-        print(uuidString)
+        window['textInput'].update(uuidString)
 
     elif event == "Copiar":
         pyperclip.copy(f'{str(uuidString)}')
