@@ -5,7 +5,7 @@ import pyperclip
 uuidString = ''
 messageString = ''
 
-sg.theme('DarkAmber')
+sg.theme('DarkTeal 7')
 
 layout = [
     [sg.InputText(f'{uuidString}', key='textInput'), sg.Text(f'{messageString}', key='textCopied')],
@@ -17,7 +17,7 @@ window = sg.Window("GUID Generate by R", layout, margins=(270, 170))
 while True:
     event, values = window.read()
 
-    if event == "Sair" or event == sg.WINDOW_CLOSED:
+    if event in ("Sair", sg.WINDOW_CLOSED):
         break
 
     elif event == "Gerar":
