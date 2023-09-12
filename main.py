@@ -27,4 +27,3 @@ while True:
         pyperclip.copy(f'{str(uuidString)}')
 
 window.close()
-
