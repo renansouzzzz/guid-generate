@@ -3,11 +3,12 @@ import uuid
 import pyperclip
 
 uuidString = ''
+messageString = ''
 
 sg.theme('DarkAmber')
 
 layout = [
-    [sg.InputText(f'{uuidString}', key='textInput')],
+    [sg.InputText(f'{uuidString}', key='textInput'), sg.Text(f'{messageString}', key='textCopied')],
     [sg.Button("Gerar"), sg.Button("Copiar"), sg.Button("Sair")]
 ]
 
@@ -25,5 +26,7 @@ while True:
 
     elif event == "Copiar":
         pyperclip.copy(f'{str(uuidString)}')
+        messageString = 'Copied!'
+        window['textCopied'].update(messageString)
 
 window.close()
