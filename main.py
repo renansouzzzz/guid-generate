@@ -8,7 +8,7 @@ messageString = ''
 sg.theme('DarkTeal 7')
 
 layout = [
-    [sg.InputText(f'{uuidString}', key='textInput'), sg.Text(f'{messageString}', key='textCopied')],
+    [sg.Multiline(f'{uuidString}\n', key='textInput', expand_x=True, expand_y=True), sg.Text(f'{messageString}', key='textCopied')],
     [sg.Button("Gerar"), sg.Button("Copiar"), sg.Button("Sair")]
 ]
 
