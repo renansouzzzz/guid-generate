@@ -3,12 +3,13 @@ import uuid
 import pyperclip
 
 uuidString = ''
+textMultiline = []
 messageString = ''
 
 sg.theme('DarkTeal 7')
 
 layout = [
-    [sg.Multiline(f'{uuidString}\n', key='textInput', expand_x=True, expand_y=True), sg.Text(f'{messageString}', key='textCopied')],
+    [sg.Multiline(f'{textMultiline}\n', key='textInput', expand_x=True, expand_y=True), sg.Text(f'{messageString}', key='textCopied')],
     [sg.Button("Gerar"), sg.Button("Copiar"), sg.Button("Sair")]
 ]
 
@@ -22,7 +23,8 @@ while True:
 
     elif event == "Gerar":
         uuidString = str(uuid.uuid4())
-        window['textInput'].update(uuidString)
+        textMultiline.append(f'{uuidString}\n')
+        window['textInput'].update(textMultiline)
 
     elif event == "Copiar":
         pyperclip.copy(f'{str(uuidString)}')
